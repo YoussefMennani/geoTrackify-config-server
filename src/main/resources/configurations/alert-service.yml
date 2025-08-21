@@ -1,0 +1,29 @@
+server:
+  port: 8095
+
+spring:
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: youssefmennani1996@gmail.com
+    password: iqsp ylvi qpkn xfpo
+    properties:
+      mail:
+        smtp:
+          auth: true
+          trust: "*"
+          starttls:
+            enable: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761/eureka}

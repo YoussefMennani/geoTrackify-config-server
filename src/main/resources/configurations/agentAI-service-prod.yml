@@ -1,0 +1,43 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://45.10.162.39:21212/GeoTrackDB
+      mapping:
+        type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://geotrackify.com/auth/realms/fleet-management-system
+
+  datasource:
+    url: jdbc:postgresql://pgvector:5432/agenticRagDb
+    username: admin
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+feign-client-vehicles-service:
+  base-url: http://geoloc-vehicles-service:8091/
+
+feign-client-tracker-service:
+  base-url: http://geoloc-tracker-service:8090/
+
+feign-client-user-service:
+  base-url: http://geoloc-user-service:8093/
+
+
+app:
+  cors:
+    allowed-origins: "*"
+  image-dir: images
+
+
+tessdata:
+  path: /usr/share/tessdata
+
+vectorstore:
+  document-path: /app/docs

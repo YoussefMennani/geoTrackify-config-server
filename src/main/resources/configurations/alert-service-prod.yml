@@ -1,0 +1,37 @@
+spring:
+
+  kafka:
+    bootstrap-servers: 45.10.162.39:9092
+    consumer:
+      group-id: alert-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: position:com.fleetManagementSystem.commons.position.model.Position
+
+  #    listener:
+  #      type: batch # Optional, if you want to handle messages in batches
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: AlertVehicle:com.fleetManagementSystem.commons.alert.AlertVehicleResponse
+
+
+
+  data:
+    mongodb:
+      uri: mongodb://45.10.162.39:21212/GeoTrackDB
+      mapping:
+        type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # The Keycloak public key URI for JWT validation
+          #          issuer-uri: https://45.10.162.39:8443/realms/fleet-management-system
+          issuer-uri: https://geotrackify.com/auth/realms/fleet-management-system

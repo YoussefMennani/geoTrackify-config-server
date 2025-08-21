@@ -1,0 +1,25 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://45.10.162.39:21212/GeoTrackDB
+      mapping:
+        type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # The Keycloak public key URI for JWT validation
+#          issuer-uri: https://45.10.162.39:8443/realms/fleet-management-system
+          issuer-uri: https://geotrackify.com/auth/realms/fleet-management-system
+
+user-service:
+  base-url: http://geoloc-user-service:8093/api
+
+feign-client-position-service:
+  base-url: http://geoloc-position-service:8092/api/v1/positions
+
+app:
+  cors:
+    allowed-origins: "*"
+

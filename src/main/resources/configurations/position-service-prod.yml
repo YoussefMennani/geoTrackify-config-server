@@ -1,0 +1,40 @@
+spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://45.10.162.39:21212/GeoPositionDB
+#      mapping:
+#        type-key: null
+
+
+  data:
+    mongodb:
+      geoPosition:
+        uri: mongodb://45.10.162.39:21212/GeoPositionDB
+        mapping:
+          type-key: null
+      geoTrack:
+        uri: mongodb://45.10.162.39:21212/GeoTrackDB
+        mapping:
+          type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          jwk-set-uri: https://45.10.162.39:8443/realms/fleet-management-system/protocol/openid-connect/certs
+#          ssl-verification-disabled: true # <== attention, option non standard
+          issuer-uri: https://geotrackify.com/auth/realms/fleet-management-system
+
+keycloak:
+  token-uri: https://45.10.162.39:8443/realms/fleet-management-system/protocol/openid-connect/token
+  client-id: listener-client
+  client-secret: S7HJBB3URuXhPbCPOiMP1RUULvTgsq6u
+
+app:
+  cors:
+    allowed-origins:
+      - "*"
+
+
+feign-client-vehicles-service:
+  base-url: http://geoloc-vehicles-service:8091

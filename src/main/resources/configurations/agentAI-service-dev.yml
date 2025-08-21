@@ -1,0 +1,43 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/GeoTrackDB
+      mapping:
+        type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # The Keycloak public key URI for JWT validation
+          issuer-uri: http://localhost:9090/realms/fleet-management-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/agenticRagDb
+    username: admin
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+feign-client-vehicles-service:
+  base-url: http://localhost:8091
+
+feign-client-tracker-service:
+  base-url: http://localhost:8090
+
+feign-client-user-service:
+  base-url: http://localhost:8093
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173
+  image-dir: images
+
+
+
+tessdata:
+  path: C:\\Users\\azerty\\Documents\\tessdata
+
+vectorstore:
+  document-path: ./docs

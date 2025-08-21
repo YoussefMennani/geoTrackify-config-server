@@ -1,0 +1,30 @@
+spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:9090/realms/fleet-management-system
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9090/realms/fleet-management-system/protocol/openid-connect/certs
+#          jwk-set-uri: https://45.10.162.39:8443/realms/fleet-management-system/protocol/openid-connect/certs
+          ssl-verification-disabled: true # <== attention, option non standard
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/GeoTrackDB
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:8091
+      - http://localhost:8097
+
+feign-client-subscription-service:
+  base-url: http://localhost:8089/api/v1/subscription
+
+logging:
+  level:
+    org.springframework.security: DEBUG

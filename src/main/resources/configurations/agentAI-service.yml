@@ -1,0 +1,56 @@
+jwt:
+  auth:
+    converter:
+      resource-id: fleet-management-system
+      principal-attribute: preferred_username
+
+server:
+  port: 7007
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/agenticRagDb
+#    username: admin
+#    password: 1234
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+//here
+OPEN_AI_API_KEY: ${OPENAI_API_KEY}
+
+langchain4j:
+  open-ai:
+    chat-model:
+      model-name: gpt-4o
+      api-key: ${OPEN_AI_API_KEY}
+      temperature: 0
+      log-requests: true
+      log-responses: true
+    streaming-chat-model:
+      model-name: gpt-4o
+      api-key: ${OPEN_AI_API_KEY}
+      temperature: 0
+      log-requests: true
+      log-responses: false
+    embedding-model:
+      model-name: text-embedding-3-small
+      api-key: ${OPEN_AI_API_KEY}
+
+logging:
+  level:
+    dev:
+      langchain4j: DEBUG
+      ai4j:
+        openai4j: DEBUG
+    ai:
+      djl: OFF
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761/eureka}

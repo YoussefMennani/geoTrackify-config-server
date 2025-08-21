@@ -1,0 +1,38 @@
+spring:
+
+  data:
+    mongodb:
+      geoPosition:
+        uri: mongodb://localhost:27017/GeoPositionDB
+        mapping:
+          type-key: null
+      geoTrack:
+        uri: mongodb://localhost:27017/GeoTrackDB
+        mapping:
+          type-key: null
+
+#  data:
+#    mongodb:
+#      geoPosition:
+#        uri: mongodb://45.10.162.39:21212/GeoPositionDB
+#        mapping:
+#          type-key: null
+#      geoTrack:
+#        uri: mongodb://45.10.162.39:21212/GeoTrackDB
+#        mapping:
+#          type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/fleet-management-system
+
+keycloak:
+  token-uri: http://localhost:8443/realms/fleet-management-system/protocol/openid-connect/token
+  client-id: listener-client
+  client-secret: NIqu6THXwIVhiIRhUQjlblDUkXRVYzUu
+
+
+feign-client-vehicles-service:
+  base-url: http://localhost:8091

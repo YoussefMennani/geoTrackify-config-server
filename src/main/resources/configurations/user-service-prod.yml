@@ -1,0 +1,36 @@
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+##          issuer-uri: https://45.10.162.39:8443/realms/fleet-management-system
+#          jwk-set-uri: https://45.10.162.39:8443/realms/fleet-management-system/protocol/openid-connect/certs
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          jwk-set-uri: https://45.10.162.39:8443/realms/fleet-management-system/protocol/openid-connect/certs
+#          jwk-set-uri: https://geotrackify.com/auth/realms/fleet-management-system/protocol/openid-connect/certs
+          issuer-uri: https://geotrackify.com/auth/realms/fleet-management-system
+
+#          ssl-verification-disabled: true # <== attention, option non standard
+
+  data:
+    mongodb:
+      uri: mongodb://45.10.162.39:21212/GeoTrackDB # injected from environment
+
+app:
+  cors:
+    allowed-origins:
+      - "*"
+
+feign-client-subscription-service:
+  base-url: http://geoloc-subscription-service:8089/api/v1/subscription
+
+
+
+logging:
+  level:
+    org.springframework.security: INFO

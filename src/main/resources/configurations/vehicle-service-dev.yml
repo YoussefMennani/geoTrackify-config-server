@@ -1,0 +1,23 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/GeoTrackDB
+      mapping:
+        type-key: null
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # The Keycloak public key URI for JWT validation
+          issuer-uri: http://localhost:9090/realms/fleet-management-system
+
+user-service:
+  base-url: http://localhost:8093/api
+
+feign-client-position-service:
+  base-url: http://localhost:8092/api/v1/positions
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173
